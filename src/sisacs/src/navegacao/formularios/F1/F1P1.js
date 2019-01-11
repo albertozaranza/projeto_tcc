@@ -4,6 +4,13 @@ import RadioForm  from 'react-native-simple-radio-button';
 import { CheckBox } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TextInputMask } from 'react-native-masked-text'
+import {connect} from 'react-redux'
+import {
+    modificaVisita, 
+    modificaMicroarea, 
+    modificaPicker,
+    modificaData
+} from '../../../actions/F1Actions'
 
 var radio_props_turno = [
     {label: 'Manhã', value: 0 },
@@ -32,17 +39,9 @@ var options = [
     "Outros",
 ];
 
-export default class F1P1 extends Component {
+class F1P1 extends Component {
     static navigationOptions = {
         title: 'Informações Básicas',
-    }
-    constructor(props) {
-        super(props);
-        this.state = { 
-            checked: false,
-            selected: '',
-            date: ''
-        };
     }
     focusNextField = (nextField) => {
         this.refs[nextField].focus()
@@ -71,21 +70,23 @@ export default class F1P1 extends Component {
                             labelHorizontal={true}
                             animation={false}
                             labelStyle={{fontSize: 18, marginRight: 20}}
-                            onPress={(value) => {this.setState({value:value})}}
+                            onPress={value => this.setState({value:value})}
                         />
                     </View>
                     <Text style={styles.titulo}>Microárea</Text>
                     <TextInput
+                        value={this.props.microarea}
+                        onChangeText={texto => this.props.modificaMicroarea(texto)}
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='1'
-                        onSubmitEditing={() => { this.focusNextField('2')}}
+                        onSubmitEditing={() => this.focusNextField('2')}
                     />
                     <View style={styles.pickerContainer}>
                         <Picker
                             mode="dropdown"
-                            selectedValue={this.state.selected}
-                            onValueChange={(selected) => {this.setState({selected})}}>
+                            selectedValue={this.props.selected}
+                            onValueChange={selected => this.props.modificaPicker(selected)}>
                                 {options.map((item, index) => {
                                     return (< Picker.Item label={item} value={index} key={index} />);
                                 })}
@@ -96,14 +97,14 @@ export default class F1P1 extends Component {
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='2'
-                        onSubmitEditing={() => { this.focusNextField('3')}}
+                        onSubmitEditing={() => this.focusNextField('3')}
                     />
                     <Text style={styles.titulo}>CNS do Cidadão</Text>
                     <TextInput 
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='3'
-                        onSubmitEditing={() => { this.focusNextField('4')}}
+                        onSubmitEditing={() => this.focusNextField('4')}
                     />
                     <Text style={styles.titulo}>Data de Nascimento</Text>
                     <TextInputMask 
@@ -112,8 +113,8 @@ export default class F1P1 extends Component {
                         options={{
                             format: 'DD/MM/YYYY'
                         }}
-                        value={this.state.date}
-                        onChangeText={(date) => {this.setState({date})}}/>
+                        value={this.props.date}
+                        onChangeText={date => this.props.modificaData(date)}/>
                     <Text style={styles.titulo}>Sexo</Text>
                     <View style={{alignItems:'center', justifyContent: 'center'}}>
                         <RadioForm
@@ -123,7 +124,7 @@ export default class F1P1 extends Component {
                             labelHorizontal={true}
                             animation={false}
                             labelStyle={{fontSize: 18, marginRight: 20}}
-                            onPress={(value) => {this.setState({value:value})}}
+                            onPress={(value) => this.setState({value:value})}
                         />
                     </View>
                     <Text style={styles.titulo}>Peso (kg)</Text>
@@ -132,7 +133,7 @@ export default class F1P1 extends Component {
                         keyboardType={'number-pad'}
                         returnKeyType={'next'}
                         ref='4'
-                        onSubmitEditing={() => { this.focusNextField('5')}}
+                        onSubmitEditing={() => this.focusNextField('5')}
                     />
                     <Text style={styles.titulo}>Altura (cm)</Text>
                     <TextInput
@@ -143,10 +144,9 @@ export default class F1P1 extends Component {
                     />
                     <View style={{marginTop: 16}}>
                         <CheckBox
-                            
                             title='Visita compartilhada com outro profissional'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.checked}
+                            onPress={() => this.props.modificaVisita(!this.props.checked)}
                         />
                     </View>
                     <View style={styles.botao}>
@@ -197,3 +197,21 @@ const styles = StyleSheet.create({
         margin: 20
     }
 });
+
+const mapStateToProps = (state) => (
+    {
+        microarea: state.form1Reducer.microarea,
+        checked: state.form1Reducer.checked,
+        selected: state.form1Reducer.selected,
+        date: state.form1Reducer.date
+    }
+)
+
+export default connect (mapStateToProps,
+    {
+        modificaVisita, 
+        modificaMicroarea,
+        modificaPicker,
+        modificaData
+    }
+)(F1P1)
