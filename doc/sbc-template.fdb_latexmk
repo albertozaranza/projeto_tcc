@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex sbc-template"] 1542174129 "sbc-template.aux" "sbc-template.bbl" "sbc-template" 1542174253
+["bibtex sbc-template"] 1546613948 "sbc-template.aux" "sbc-template.bbl" "sbc-template" 1546613965
   "./sbc.bst" 1542163930 21864 a668496cca21cfdd211f7fb5f0d57565 ""
-  "sbc-template.aux" 1542174252 1519 19af09a0c3d198136c824d6b6ffaa49f ""
+  "sbc-template.aux" 1546613964 1529 d11d06e8cf423aa59e0aac97f5f02351 ""
   "sbc-template.bib" 1542163930 725 bdc459d9953eda08f21705ef20e3b912 ""
   (generated)
   "sbc-template.blg"
   "sbc-template.bbl"
-["pdflatex"] 1542174250 "c:/Users/alber/Documents/projeto_tcc/doc/sbc-template.tex" "sbc-template.pdf" "sbc-template" 1542174253
-  "c:/Users/alber/Documents/projeto_tcc/doc/sbc-template.tex" 1542174249 6742 d61fd5e534845f9a5b74aaee368699b7 ""
+["pdflatex"] 1546613962 "c:/Users/alber/Documents/projeto_tcc/doc/sbc-template.tex" "sbc-template.pdf" "sbc-template" 1546613965
+  "c:/Users/alber/Documents/projeto_tcc/doc/sbc-template.tex" 1546613961 7020 9699af2557ed6d98f93051e81a775df7 ""
   "c:/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1542165261 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1542166487 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2018/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1542164598 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -77,12 +77,12 @@
   "c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty" 1542170420 12095 5337833c991d80788a43d3ce26bd1c46 ""
   "c:/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty" 1542170420 7075 2fe3d848bba95f139de11ded085e74aa ""
   "c:/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty" 1542170420 22417 1d9df1eb66848aa31b18a593099cf45c ""
-  "c:/texlive/2018/texmf-dist/tex/latex/psnfss/omspcr.fd" 1542171028 576 907c194ce74186f4e40247f2ba1986cf ""
   "c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1pcr.fd" 1542171028 985 1ed784d7bfe47179f3550d2303b073f8 ""
   "c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1phv.fd" 1542171028 1684 0ac4554419e828cf2c810306539da167 ""
   "c:/texlive/2018/texmf-dist/tex/latex/psnfss/ot1ptm.fd" 1542171028 961 15056f4a61917ceed3a44e4ac11fcc52 ""
   "c:/texlive/2018/texmf-dist/tex/latex/psnfss/times.sty" 1542171029 857 6c716f26c5eadfb81029fcd6ce2d45e6 ""
   "c:/texlive/2018/texmf-dist/tex/latex/titlesec/titlesec.sty" 1542172627 37387 afa86533e532701faf233f3f592c61e0 ""
+  "c:/texlive/2018/texmf-dist/tex/latex/tools/indentfirst.sty" 1542172734 1615 dba466e323af4fcd4a6acb87444d96c3 ""
   "c:/texlive/2018/texmf-dist/tex/latex/url/url.sty" 1542173070 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "c:/texlive/2018/texmf-dist/web2c/texmf.cnf" 1542168849 33362 cf75436e19743e94a92a6b1b9183c434 ""
   "c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1542173607 2999905 28b3b29524f4f697ada243e6e05c75f1 ""
@@ -91,11 +91,11 @@
   "caption2.sty" 1542163930 15190 35c3352faab63b28086162350d49d218 ""
   "fig1.jpg" 1542163930 39933 e1bbe31b6df35507bbaf99995585d636 ""
   "fig2.jpg" 1542163930 22945 a28e60c395d91384d9e32be051b6cd94 ""
-  "sbc-template.aux" 1542174252 1519 19af09a0c3d198136c824d6b6ffaa49f ""
-  "sbc-template.bbl" 1542174130 664 72f3ed45505486cb648045678ea11d4f "bibtex sbc-template"
+  "sbc-template.aux" 1546613964 1529 d11d06e8cf423aa59e0aac97f5f02351 ""
+  "sbc-template.bbl" 1546613949 664 72f3ed45505486cb648045678ea11d4f "bibtex sbc-template"
   "sbc-template.sty" 1542163930 5285 fb8f2a32de10fa23e40f15acd9749a09 ""
-  "sbc-template.tex" 1542174249 6742 d61fd5e534845f9a5b74aaee368699b7 ""
+  "sbc-template.tex" 1546613961 7020 9699af2557ed6d98f93051e81a775df7 ""
   (generated)
+  "sbc-template.pdf"
   "sbc-template.log"
   "sbc-template.aux"
-  "sbc-template.pdf"
