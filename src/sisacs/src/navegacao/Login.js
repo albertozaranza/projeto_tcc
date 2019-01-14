@@ -26,6 +26,7 @@ class Login extends Component {
                     value={this.props.email}
                     onChangeText={texto => this.props.modificaEmail(texto)}
                     style={styles.inputContainer}
+                    keyboardType={'email-address'}
                     returnKeyType={'next'}
                     ref='1'
                     onSubmitEditing={() => this.focusNextField('2')}
@@ -34,9 +35,9 @@ class Login extends Component {
                     value={this.props.senha}
                     onChangeText={texto => this.props.modificaSenha(texto)}
                     style={styles.inputContainer}
-                    returnKeyType={'next'}
-                    ref='1'
-                    onSubmitEditing={() => this.focusNextField('2')}
+                    secureTextEntry
+                    returnKeyType={'done'}
+                    ref='2'
                 />
                 <Button title="Fazer login" onPress={() => this.props.navigation.navigate('Home')}/>
             </View>
