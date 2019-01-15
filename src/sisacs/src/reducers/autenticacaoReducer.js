@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     email: '',
     senha: '',
+    erroLogin: ''
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -14,6 +15,12 @@ export default (state = INITIAL_STATE, action) => {
         return {
             ...state,
             senha: action.payload
+        }
+    }
+    if(action.type == 'falha_login'){
+        return {
+            ...state,
+            erroLogin: action.payload
         }
     }
     return state

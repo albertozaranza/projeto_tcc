@@ -4,8 +4,9 @@ import { TextInput } from 'react-native-gesture-handler';
 import {connect} from 'react-redux'
 import {
     modificaEmail, 
-    modificaSenha
-} from '../actions/UsuarioActions'
+    modificaSenha,
+    autenticarUsuario
+} from '../actions/AutenticacaoActions'
 
 class Login extends Component {
     static navigationOptions = {
@@ -13,6 +14,10 @@ class Login extends Component {
     }
     focusNextField = (nextField) => {
         this.refs[nextField].focus()
+    }
+    _autenticarUsuario() {
+        const {email, senha} = this.props
+        this.props.autenticarUsuario({email, senha})
     }
     render() {
         return (
@@ -39,7 +44,12 @@ class Login extends Component {
                     returnKeyType={'done'}
                     ref='2'
                 />
-                <Button title="Fazer login" onPress={() => this.props.navigation.navigate('Home')}/>
+                <Text style={{color: '#ff0000', fontSize: 18}}>
+                    {this.props.erroLogin}
+                </Text>
+                <Button 
+                    title="Fazer login" 
+                    onPress={() => this._autenticarUsuario()}/>
             </View>
         );
     }
@@ -63,14 +73,16 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => (
     {
-        email: state.usuarioReducer.email,
-        senha: state.usuarioReducer.senha,
+        email: state.autenticacaoReducer.email,
+        senha: state.autenticacaoReducer.senha,
+        erroLogin: state.autenticacaoReducer.erroLogin
     }
 )
 
 export default connect (mapStateToProps,
     {
         modificaEmail, 
-        modificaSenha
+        modificaSenha,
+        autenticarUsuario
     }
 )(Login)
