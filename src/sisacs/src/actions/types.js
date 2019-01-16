@@ -1,0 +1,7 @@
+export const MODIFICA_EMAIL = 'modifica_email'
+export const MODIFICA_SENHA = 'modifica_senha'
+export const FALHA_LOGIN = 'falha_login'
+export const MODIFICA_MICROAREA = 'modifica_microarea'
+export const MODIFICA_VISITA_COMPARTILHADA = 'modifica_visita_compartilhada'
+export const MODIFICA_PICKER = 'modifica_picker'
+export const MODIFICA_DATA = 'modifica_data'

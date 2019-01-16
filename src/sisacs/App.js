@@ -17,7 +17,9 @@ export default class App extends Component {
       storageBucket: "sisacs-tcc.appspot.com",
       messagingSenderId: "549791658870"
     };
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);
+    }
   }
   render() {
     return (

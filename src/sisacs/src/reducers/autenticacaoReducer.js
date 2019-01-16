@@ -1,3 +1,10 @@
+import {
+    MODIFICA_EMAIL,
+    MODIFICA_SENHA,
+    FALHA_LOGIN
+} from '../actions/types'
+
+
 const INITIAL_STATE = {
     email: '',
     senha: '',
@@ -5,23 +12,14 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-    if(action.type == 'modifica_email'){
-        return {
-            ...state,
-            email: action.payload
-        }
+    switch (action.type){
+        case MODIFICA_EMAIL:
+            return {...state, email: action.payload}
+        case MODIFICA_SENHA:
+            return {...state, senha: action.payload}
+        case FALHA_LOGIN:
+            return {...state, erroLogin: action.payload}
+        default:
+            return state
     }
-    if(action.type == 'modifica_senha'){
-        return {
-            ...state,
-            senha: action.payload
-        }
-    }
-    if(action.type == 'falha_login'){
-        return {
-            ...state,
-            erroLogin: action.payload
-        }
-    }
-    return state
 }

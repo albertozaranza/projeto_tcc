@@ -1,3 +1,10 @@
+import {
+    MODIFICA_MICROAREA,
+    MODIFICA_VISITA_COMPARTILHADA,
+    MODIFICA_PICKER,
+    MODIFICA_DATA
+} from '../actions/types'
+
 const INITIAL_STATE = {
     microarea: '',
     checked: false,
@@ -6,29 +13,16 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-    if(action.type == 'modifica_microarea'){
-        return {
-            ...state,
-            microarea: action.payload
-        }
+    switch (action.type){
+        case MODIFICA_MICROAREA:
+            return {...state, microarea: action.payload}
+        case MODIFICA_VISITA_COMPARTILHADA:
+            return {...state, checked: action.payload}
+        case MODIFICA_PICKER:
+            return {...state, selected: action.payload}
+        case MODIFICA_DATA:
+            return {...state, date: action.payload}
+        default:
+            return state
     }
-    if(action.type == 'modifica_visita_compartilhada'){
-        return {
-            ...state,
-            checked: action.payload
-        }
-    }
-    if(action.type == 'modifica_picker'){
-        return {
-            ...state,
-            selected: action.payload
-        }
-    }
-    if(action.type == 'modifica_data'){
-        return {
-            ...state,
-            date: action.payload
-        }
-    }
-    return state
 }

@@ -1,27 +1,22 @@
+import {
+    MODIFICA_MICROAREA,
+    MODIFICA_VISITA_COMPARTILHADA,
+    MODIFICA_PICKER,
+    MODIFICA_DATA
+} from './types'
+
 export const modificaMicroarea = (texto) => {
-    return {
-        type: 'modifica_microarea',
-        payload: texto
-    }
+    return {type: MODIFICA_MICROAREA, payload: texto}
 }
 
 export const modificaVisita = (valor) => {
-    return {
-        type: 'modifica_visita_compartilhada',
-        payload: valor
-    }
+    return {type: MODIFICA_VISITA_COMPARTILHADA, payload: valor}
 }
 
 export const modificaPicker = (opcao) => {
-    return {
-        type: 'modifica_picker',
-        payload: opcao
-    }
+    return {type: MODIFICA_PICKER, payload: opcao}
 }
 
 export const modificaData = (data) => {
-    return {
-        type: 'modifica_data',
-        payload: data
-    }
+    return {type: MODIFICA_DATA, payload: data}
 }
