@@ -31,7 +31,7 @@ const sucessoLogin = (dispatch) => {
             type: 'sucesso_login'
         }
     )
-    NavigationService.navigate('Home');
+    NavigationService.reset('Home');
 }
 
 const falhaLogin = (erro, dispatch) => {

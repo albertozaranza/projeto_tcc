@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View, ScrollView, Button, Text} from 'react-native';
 import { CheckBox } from 'react-native-elements'
 import RadioForm  from 'react-native-simple-radio-button';
+import NavigationService from '../../NavigationService';
 
 var radio_props_desfecho = [
     {label: 'Visita realizada', value: 0 },
@@ -19,7 +20,7 @@ export default class F1P6 extends Component {
     }
     fp = () => {
         alert('Formulário submetido com sucesso!')
-        return this.props.navigation.navigate('Home')
+        return NavigationService.reset('Home');
     }
     render() {
         const { goBack } = this.props.navigation;
