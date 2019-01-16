@@ -1,14 +1,16 @@
 import {
     MODIFICA_EMAIL,
     MODIFICA_SENHA,
-    FALHA_LOGIN
+    FALHA_LOGIN,
+    LOADING_LOGIN
 } from '../actions/types'
 
 
 const INITIAL_STATE = {
     email: '',
     senha: '',
-    erroLogin: ''
+    erroLogin: '',
+    loadingLogin: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -18,7 +20,9 @@ export default (state = INITIAL_STATE, action) => {
         case MODIFICA_SENHA:
             return {...state, senha: action.payload}
         case FALHA_LOGIN:
-            return {...state, erroLogin: action.payload}
+            return {...state, erroLogin: action.payload, loadingLogin: false}
+        case LOADING_LOGIN:
+            return {...state, loadingLogin: true}
         default:
             return state
     }

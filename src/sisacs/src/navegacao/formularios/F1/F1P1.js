@@ -200,10 +200,10 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => (
     {
-        microarea: state.form1Reducer.microarea,
-        checked: state.form1Reducer.checked,
-        selected: state.form1Reducer.selected,
-        date: state.form1Reducer.date
+        microarea: state.Form1Reducer.microarea,
+        checked: state.Form1Reducer.checked,
+        selected: state.Form1Reducer.selected,
+        date: state.Form1Reducer.date
     }
 )
 

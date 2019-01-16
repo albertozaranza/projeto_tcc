@@ -4,7 +4,8 @@ import NavigationService from '../navegacao/NavigationService';
 import {
     MODIFICA_EMAIL,
     MODIFICA_SENHA,
-    FALHA_LOGIN
+    FALHA_LOGIN,
+    LOADING_LOGIN
 } from './types'
 
 export const modificaEmail = (texto) => {
@@ -17,6 +18,7 @@ export const modificaSenha = (texto) => {
 
 export const autenticarUsuario = ({email, senha}) => {
     return dispatch => {
+        dispatch({type: LOADING_LOGIN})
         firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(() => sucessoLogin())
             .catch(erro => falhaLogin(erro, dispatch))

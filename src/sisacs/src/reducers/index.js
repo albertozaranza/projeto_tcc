@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-import form1Reducer from './form1Reducer'
-import autenticacaoReducer from './autenticacaoReducer'
+import Form1Reducer from './Form1Reducer'
+import AutenticacaoReducer from './AutenticacaoReducer'
 
 export default combineReducers ({
-    form1Reducer: form1Reducer,
-    autenticacaoReducer: autenticacaoReducer
+    Form1Reducer: Form1Reducer,
+    AutenticacaoReducer: AutenticacaoReducer
 });

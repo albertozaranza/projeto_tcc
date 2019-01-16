@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, StyleSheet, View, Text} from 'react-native'
+import {Button, StyleSheet, View, Text, ActivityIndicator} from 'react-native'
 import { TextInput } from 'react-native-gesture-handler';
 import {connect} from 'react-redux'
 import {
@@ -18,6 +18,16 @@ class Login extends Component {
     _autenticarUsuario() {
         const {email, senha} = this.props
         this.props.autenticarUsuario({email, senha})
+    }
+    renderBotaoLogin = () => {
+        if(this.props.loadingLogin){
+            return(
+                <ActivityIndicator size='large' />
+            )
+        }
+        return(
+            <Button title="Fazer login" onPress={() => this._autenticarUsuario()}/>
+        )
     }
     render() {
         return (
@@ -47,9 +57,9 @@ class Login extends Component {
                 <Text style={{color: '#ff0000', fontSize: 18}}>
                     {this.props.erroLogin}
                 </Text>
-                <Button 
-                    title="Fazer login" 
-                    onPress={() => this._autenticarUsuario()}/>
+                <View>
+                    {this.renderBotaoLogin()}
+                </View>
             </View>
         );
     }
@@ -73,9 +83,11 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => (
     {
-        email: state.autenticacaoReducer.email,
-        senha: state.autenticacaoReducer.senha,
-        erroLogin: state.autenticacaoReducer.erroLogin
+        email: state.AutenticacaoReducer.email,
+        senha: state.AutenticacaoReducer.senha,
+        erroLogin: state.AutenticacaoReducer.erroLogin,
+        loadingLogin: state.AutenticacaoReducer.loadingLogin
+
     }
 )
 
