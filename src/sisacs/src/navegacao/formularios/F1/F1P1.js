@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput, Button, Picker, Item} from 'react-native';
+import {StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native';
 import RadioForm  from 'react-native-simple-radio-button';
 import { CheckBox } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
