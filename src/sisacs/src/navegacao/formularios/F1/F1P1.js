@@ -3,13 +3,19 @@ import {StyleSheet, Text, View, TextInput, Button, Picker, Item} from 'react-nat
 import RadioForm  from 'react-native-simple-radio-button';
 import { CheckBox } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { TextInputMask } from 'react-native-masked-text'
+import { MaskService } from 'react-native-masked-text'
 import {connect} from 'react-redux'
 import {
-    modificaVisita, 
-    modificaMicroarea, 
-    modificaPicker,
-    modificaData
+    modificaTurno,
+    modificaMicroarea,
+    modificaTipoImovel,
+    modificaNumeroProntuario,
+    modificaCNS,
+    modificaData,
+    modificaSexo,
+    modificaPeso,
+    modificaAltura,    
+    modificaVisitaCompartilhada
 } from '../../../actions/F1Actions'
 
 var radio_props_turno = [
@@ -41,7 +47,7 @@ var options = [
 
 class F1P1 extends Component {
     static navigationOptions = {
-        title: 'Informações Básicas',
+        title: 'Informações Básicas'
     }
     focusNextField = (nextField) => {
         this.refs[nextField].focus()
@@ -57,6 +63,10 @@ class F1P1 extends Component {
             return 2
         }
     }
+    mascararData = (value) => {
+        let novaData = MaskService.toMask('datetime', value, {format: 'DD/MM/YYYY'})
+        this.props.modificaData(novaData)
+    }
     render() {
         return(
             <View style={styles.container}>
@@ -70,30 +80,33 @@ class F1P1 extends Component {
                             labelHorizontal={true}
                             animation={false}
                             labelStyle={{fontSize: 18, marginRight: 20}}
-                            onPress={value => this.setState({value:value})}
+                            onPress={value => this.props.modificaTurno(value)}
                         />
                     </View>
                     <Text style={styles.titulo}>Microárea</Text>
                     <TextInput
                         value={this.props.microarea}
-                        onChangeText={texto => this.props.modificaMicroarea(texto)}
+                        onChangeText={value => this.props.modificaMicroarea(value)}
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='1'
                         onSubmitEditing={() => this.focusNextField('2')}
                     />
+                    <Text style={styles.titulo}>Tipo do Imóvel</Text>
                     <View style={styles.pickerContainer}>
                         <Picker
                             mode="dropdown"
-                            selectedValue={this.props.selected}
-                            onValueChange={selected => this.props.modificaPicker(selected)}>
+                            selectedValue={this.props.tipo_imovel}
+                            onValueChange={selected => this.props.modificaTipoImovel(selected)}>
                                 {options.map((item, index) => {
                                     return (< Picker.Item label={item} value={index} key={index} />);
                                 })}
                         </Picker>
                     </View>
                     <Text style={styles.titulo}>Número do Prontuário</Text>
-                    <TextInput 
+                    <TextInput
+                        value={this.props.numero_prontuario}
+                        onChangeText={value => this.props.modificaNumeroProntuario(value)}
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='2'
@@ -101,20 +114,22 @@ class F1P1 extends Component {
                     />
                     <Text style={styles.titulo}>CNS do Cidadão</Text>
                     <TextInput 
+                        value={this.props.cns}
+                        onChangeText={value => this.props.modificaCNS(value)}
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='3'
                         onSubmitEditing={() => this.focusNextField('4')}
                     />
                     <Text style={styles.titulo}>Data de Nascimento</Text>
-                    <TextInputMask 
+                    <TextInput 
+                        value={this.props.data}
+                        onChangeText={value => this.mascararData(value)}
                         style={styles.inputContainer}
-                        type={'datetime'}
-                        options={{
-                            format: 'DD/MM/YYYY'
-                        }}
-                        value={this.props.date}
-                        onChangeText={date => this.props.modificaData(date)}/>
+                        returnKeyType={'next'}
+                        ref='4'
+                        onSubmitEditing={() => this.focusNextField('5')}
+                    />
                     <Text style={styles.titulo}>Sexo</Text>
                     <View style={{alignItems:'center', justifyContent: 'center'}}>
                         <RadioForm
@@ -124,29 +139,33 @@ class F1P1 extends Component {
                             labelHorizontal={true}
                             animation={false}
                             labelStyle={{fontSize: 18, marginRight: 20}}
-                            onPress={(value) => this.setState({value:value})}
+                            onPress={(value) => this.props.modificaSexo(value)}
                         />
                     </View>
                     <Text style={styles.titulo}>Peso (kg)</Text>
                     <TextInput
+                        value={this.props.peso}
+                        onChangeText={value => this.props.modificaPeso(value)}
                         style={styles.inputContainer}
                         keyboardType={'number-pad'}
                         returnKeyType={'next'}
-                        ref='4'
-                        onSubmitEditing={() => this.focusNextField('5')}
+                        ref='5'
+                        onSubmitEditing={() => this.focusNextField('6')}
                     />
                     <Text style={styles.titulo}>Altura (cm)</Text>
                     <TextInput
+                        value={this.props.altura}
+                        onChangeText={value => this.props.modificaAltura(value)}
                         style={styles.inputContainer}
                         keyboardType={'number-pad'}
                         returnKeyType={'done'}
-                        ref='5'
+                        ref='6'
                     />
                     <View style={{marginTop: 16}}>
                         <CheckBox
                             title='Visita compartilhada com outro profissional'
-                            checked={this.props.checked}
-                            onPress={() => this.props.modificaVisita(!this.props.checked)}
+                            checked={this.props.visita_compartilhada}
+                            onPress={() => this.props.modificaVisitaCompartilhada(!this.props.visita_compartilhada)}
                         />
                     </View>
                     <View style={styles.botao}>
@@ -187,7 +206,6 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         borderRadius: 6,
-        marginTop: 16,
         marginHorizontal: 2
     },
     botao: {
@@ -200,18 +218,30 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => (
     {
+        turno: state.Form1Reducer.turno,
         microarea: state.Form1Reducer.microarea,
-        checked: state.Form1Reducer.checked,
-        selected: state.Form1Reducer.selected,
-        date: state.Form1Reducer.date
+        tipo_imovel: state.Form1Reducer.tipo_imovel,
+        numero_prontuario: state.Form1Reducer.numero_prontuario,
+        cns: state.Form1Reducer.cns,
+        data: state.Form1Reducer.data,
+        sexo: state.Form1Reducer.sexo,
+        peso: state.Form1Reducer.peso,
+        altura: state.Form1Reducer.altura,
+        visita_compartilhada: state.Form1Reducer.visita_compartilhada
     }
 )
 
 export default connect (mapStateToProps,
     {
-        modificaVisita, 
+        modificaTurno,
         modificaMicroarea,
-        modificaPicker,
-        modificaData
+        modificaTipoImovel,
+        modificaNumeroProntuario,
+        modificaCNS,
+        modificaData,
+        modificaSexo,
+        modificaPeso,
+        modificaAltura,    
+        modificaVisitaCompartilhada
     }
 )(F1P1)

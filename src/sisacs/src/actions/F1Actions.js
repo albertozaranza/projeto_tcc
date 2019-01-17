@@ -1,22 +1,43 @@
 import {
+    MODIFICA_TURNO,
     MODIFICA_MICROAREA,
-    MODIFICA_VISITA_COMPARTILHADA,
-    MODIFICA_PICKER,
-    MODIFICA_DATA
+    MODIFICA_TIPO_IMOVEL,
+    MODIFICA_NUMERO_PRONTUARIO,
+    MODIFICA_CNS,
+    MODIFICA_DATA,
+    MODIFICA_SEXO,
+    MODIFICA_PESO,
+    MODIFICA_ALTURA,
+    MODIFICA_VISITA_COMPARTILHADA
 } from './types'
 
-export const modificaMicroarea = (texto) => {
-    return {type: MODIFICA_MICROAREA, payload: texto}
+export const modificaTurno = (value) => {
+    return {type: MODIFICA_TURNO, payload: value}
 }
-
-export const modificaVisita = (valor) => {
-    return {type: MODIFICA_VISITA_COMPARTILHADA, payload: valor}
+export const modificaMicroarea = (value) => {
+    return {type: MODIFICA_MICROAREA, payload: value}
 }
-
-export const modificaPicker = (opcao) => {
-    return {type: MODIFICA_PICKER, payload: opcao}
+export const modificaTipoImovel = (value) => {
+    return {type: MODIFICA_TIPO_IMOVEL, payload: value}
 }
-
-export const modificaData = (data) => {
-    return {type: MODIFICA_DATA, payload: data}
+export const modificaNumeroProntuario = (value) => {
+    return {type: MODIFICA_NUMERO_PRONTUARIO, payload: value}
+}
+export const modificaCNS = (value) => {
+    return {type: MODIFICA_CNS, payload: value}
+}
+export const modificaData = (value) => {
+    return {type: MODIFICA_DATA, payload: value}
+}
+export const modificaSexo = (value) => {
+    return {type: MODIFICA_SEXO, payload: value}
+}
+export const modificaPeso = (value) => {
+    return {type: MODIFICA_PESO, payload: value}
+}
+export const modificaAltura = (value) => {
+    return {type: MODIFICA_ALTURA, payload: value}
+}
+export const modificaVisitaCompartilhada = (value) => {
+    return {type: MODIFICA_VISITA_COMPARTILHADA, payload: value}
 }
