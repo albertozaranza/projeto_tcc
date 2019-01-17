@@ -36,7 +36,7 @@ export default class App extends Component {
     });
   }
   render() {
-    if (this.state.loading) return null;
+    if (this.state.loading)  return null
     if (!this.state.authenticated) {
         return (
           <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
@@ -48,16 +48,14 @@ export default class App extends Component {
           </Provider>
         );
     }
-    else {
-      return (
-        <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
-          <AppContainerHome
-            ref={navigatorRef => {
-              NavigationService.setTopLevelNavigator(navigatorRef);
-            }}
-          />
-        </Provider>
-      );
-    }
+    return (
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+        <AppContainerHome
+          ref={navigatorRef => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
+      </Provider>
+    );
   }
 }
