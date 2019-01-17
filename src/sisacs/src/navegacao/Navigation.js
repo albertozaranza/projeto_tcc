@@ -8,7 +8,7 @@ import F1P6 from './formularios/F1/F1P6'
 import TelaInicial from './TelaInicial'
 import Login from './Login'
 
-const AppNavigator = createStackNavigator(
+const LoginStack = createStackNavigator(
   {
     Login,
     Home: TelaInicial,
@@ -24,6 +24,21 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-const AppContainer = createAppContainer(AppNavigator);
+const HomeStack = createStackNavigator(
+  {
+    Login,
+    Home: TelaInicial,
+    F1P1,
+    F1P2,
+    F1P3,
+    F1P4,
+    F1P5,
+    F1P6
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
 
-export default AppContainer
+export const AppContainerLogin = createAppContainer(LoginStack);
+export const AppContainerHome = createAppContainer(HomeStack);
