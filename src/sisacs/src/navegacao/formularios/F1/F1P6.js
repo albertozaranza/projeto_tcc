@@ -1,29 +1,29 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, ScrollView, Button, Text} from 'react-native';
+import React, {Component} from 'react'
+import {StyleSheet, View, ScrollView, Button, Text} from 'react-native'
 import { CheckBox } from 'react-native-elements'
-import RadioForm  from 'react-native-simple-radio-button';
-import NavigationService from '../../NavigationService';
+import RadioForm  from 'react-native-simple-radio-button'
+import NavigationService from '../../NavigationService'
 
 var radio_props_desfecho = [
     {label: 'Visita realizada', value: 0 },
     {label: 'Visita recusada', value: 1 },
     {label: 'Ausente', value: 2 }
-];
+]
 
 export default class F1P6 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
     }
     constructor(props) {
-        super(props);
-        this.state = { checked: false };
+        super(props)
+        this.state = { checked: false }
     }
     fp = () => {
         alert('Formulário submetido com sucesso!')
-        return NavigationService.reset('Home');
+        return NavigationService.reset('Home')
     }
     render() {
-        const { goBack } = this.props.navigation;
+        const { goBack } = this.props.navigation
         return(
             <View style={styles.container}>
                 <ScrollView contentContainerStyle={styles.container}>
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginVertical: 8
     },
-});
+})

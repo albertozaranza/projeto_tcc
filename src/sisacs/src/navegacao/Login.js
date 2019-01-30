@@ -1,32 +1,38 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {Button, StyleSheet, View, Text, ActivityIndicator} from 'react-native'
-import { TextInput } from 'react-native-gesture-handler';
-import {connect} from 'react-redux'
-import {
-    modificaEmail, 
-    modificaSenha,
-    autenticarUsuario
-} from '../actions/AutenticacaoActions'
+import { TextInput } from 'react-native-gesture-handler'
+import firebase from '@firebase/app'
+require('firebase/auth')
 
-class Login extends Component {
+export default class Login extends Component {
     static navigationOptions = {
         title: 'Login',
     }
+    constructor() {
+        super()
+        this.state = {
+          email: '',
+          senha: '',
+          erroLogin: '',
+          loadingLogin: false
+        }
+      }
     focusNextField = (nextField) => {
         this.refs[nextField].focus()
     }
-    _autenticarUsuario() {
-        const {email, senha} = this.props
-        this.props.autenticarUsuario({email, senha})
+    autenticarUsuario() {
+        this.setState({loadingLogin: true})
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.senha)
+            .catch(erroLogin => this.setState({erroLogin, loadingLogin: false}))
     }
     renderBotaoLogin = () => {
-        if(this.props.loadingLogin){
+        if(this.state.loadingLogin == true){
             return(
                 <ActivityIndicator size='large' />
             )
         }
         return(
-            <Button title="Fazer login" onPress={() => this._autenticarUsuario()}/>
+            <Button title="Fazer login" onPress={() => this.autenticarUsuario()}/>
         )
     }
     render() {
@@ -38,8 +44,8 @@ class Login extends Component {
                     </Text>
                 </View>
                 <TextInput
-                    value={this.props.email}
-                    onChangeText={texto => this.props.modificaEmail(texto)}
+                    value={this.state.email}
+                    onChangeText={email => this.setState({email})}
                     style={styles.inputContainer}
                     keyboardType={'email-address'}
                     returnKeyType={'next'}
@@ -47,21 +53,21 @@ class Login extends Component {
                     onSubmitEditing={() => this.focusNextField('2')}
                 />
                 <TextInput
-                    value={this.props.senha}
-                    onChangeText={texto => this.props.modificaSenha(texto)}
+                    value={this.state.senha}
+                    onChangeText={senha => this.setState({senha})}
                     style={styles.inputContainer}
                     secureTextEntry
                     returnKeyType={'done'}
                     ref='2'
                 />
                 <Text style={{color: '#ff0000', fontSize: 18}}>
-                    {this.props.erroLogin}
+                    {this.state.erroLogin.toString()}
                 </Text>
                 <View>
                     {this.renderBotaoLogin()}
                 </View>
             </View>
-        );
+        )
     }
 }
 
@@ -79,22 +85,4 @@ const styles = StyleSheet.create({
         height: 40,
         fontSize: 16
     }
-});
-
-const mapStateToProps = (state) => (
-    {
-        email: state.AutenticacaoReducer.email,
-        senha: state.AutenticacaoReducer.senha,
-        erroLogin: state.AutenticacaoReducer.erroLogin,
-        loadingLogin: state.AutenticacaoReducer.loadingLogin
-
-    }
-)
-
-export default connect (mapStateToProps,
-    {
-        modificaEmail, 
-        modificaSenha,
-        autenticarUsuario
-    }
-)(Login)
+})

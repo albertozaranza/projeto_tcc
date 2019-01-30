@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native';
-import RadioForm  from 'react-native-simple-radio-button';
+import React, {Component} from 'react'
+import {StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native'
+import RadioForm  from 'react-native-simple-radio-button'
 import { CheckBox } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { MaskService } from 'react-native-masked-text'
@@ -22,12 +22,12 @@ var radio_props_turno = [
     {label: 'Manhã', value: 0 },
     {label: 'Tarde', value: 1 },
     {label: 'Noite', value: 2 }
-];
+]
 
 var radio_props_sexo = [
     {label: 'Masculino', value: 0 },
     {label: 'Feminino', value: 1 }
-];
+]
 
 var options = [
     "Domicilio",
@@ -43,7 +43,7 @@ var options = [
     "Delegacia",
     "Estabelecimento religioso",
     "Outros",
-];
+]
 
 class F1P1 extends Component {
     static navigationOptions = {
@@ -99,7 +99,7 @@ class F1P1 extends Component {
                             selectedValue={this.props.tipo_imovel}
                             onValueChange={selected => this.props.modificaTipoImovel(selected)}>
                                 {options.map((item, index) => {
-                                    return (< Picker.Item label={item} value={index} key={index} />);
+                                    return (< Picker.Item label={item} value={index} key={index} />)
                                 })}
                         </Picker>
                     </View>
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         margin: 20
     }
-});
+})
 
 const mapStateToProps = (state) => (
     {

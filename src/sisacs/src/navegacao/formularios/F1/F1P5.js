@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, ScrollView, Button, Text} from 'react-native';
+import React, {Component} from 'react'
+import {StyleSheet, View, ScrollView, Button, Text} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 
 export default class F1P5 extends Component {
@@ -7,11 +7,11 @@ export default class F1P5 extends Component {
         title: 'Motivo da visita',
     }
     constructor(props) {
-        super(props);
-        this.state = { checked: false };
+        super(props)
+        this.state = { checked: false }
     }
     render() {
-        const { goBack } = this.props.navigation;
+        const { goBack } = this.props.navigation
         return(
             <View style={styles.container}>
                 <ScrollView contentContainerStyle={styles.container}>
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginVertical: 8
     },
-});
+})

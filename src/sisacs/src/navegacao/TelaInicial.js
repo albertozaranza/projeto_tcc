@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import {Button, StyleSheet, View, Text, TouchableOpacity} from 'react-native'
-import NavigationService from '../navegacao/NavigationService';
 import firebase from '@firebase/app'
 require('firebase/auth')
 
@@ -10,7 +9,7 @@ export default class TelaInicial extends Component {
         headerRight: 
             <TouchableOpacity
                 style={{margin: 10, padding: 10}}
-                onPress={() => firebase.auth().signOut().then(() => NavigationService.reset('Login'))}>
+                onPress={() => firebase.auth().signOut()}>
                 <Text>Sair</Text>
             </TouchableOpacity>
     })
@@ -22,7 +21,7 @@ export default class TelaInicial extends Component {
                 </Text>
                 <Button title="Ficha de Visita Domiciliar e Territorial" onPress={() => this.props.navigation.navigate('F1P1')}/>
             </View>
-        );
+        )
     }
 }
 
@@ -32,4 +31,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     }
-});
+})

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, ScrollView, Button, Text} from 'react-native';
+import React, {Component} from 'react'
+import {StyleSheet, View, ScrollView, Button, Text} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import {connect} from 'react-redux'
 import {
@@ -16,7 +16,7 @@ class F1P2 extends Component {
         title: 'Motivo da visita',
     }
     render() {
-        const { goBack } = this.props.navigation;
+        const { goBack } = this.props.navigation
         return(
             <View style={styles.container}>
                 <ScrollView contentContainerStyle={styles.container}>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginVertical: 8
     },
-});
+})
 
 const mapStateToProps = (state) => (
     {

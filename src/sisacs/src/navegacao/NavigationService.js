@@ -1,9 +1,9 @@
-import { StackActions, NavigationActions } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation'
 
-let _navigator;
+let _navigator
 
 setTopLevelNavigator = (navigatorRef) => {
-  _navigator = navigatorRef;
+  _navigator = navigatorRef
 }
 
 navigate = (routeName) => {
@@ -11,7 +11,7 @@ navigate = (routeName) => {
     NavigationActions.navigate({
       routeName
     })
-  );
+  )
 }
 
 reset = (routeName) => {
@@ -20,11 +20,11 @@ reset = (routeName) => {
       index: 0,
       actions: [NavigationActions.navigate({ routeName })],
     })
-  );
+  )
 }
 
 export default {
   navigate,
   setTopLevelNavigator,
   reset
-};
+}
