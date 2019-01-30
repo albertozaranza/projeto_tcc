@@ -1,8 +1,25 @@
 import React, {Component} from 'react'
 import {StyleSheet, View, ScrollView, Button, Text} from 'react-native'
 import { CheckBox } from 'react-native-elements'
+import {connect} from 'react-redux'
+import {
+    modificaGestante,
+    modificaPuepera,
+    modificaRecemNascido,
+    modificaCrianca,
+    modificaDesnutricao,
+    modificaReabilitacaoDeficiente,
+    modificaHispertensao,
+    modificaDiabetes,
+    modificaAsma,
+    modificaDpocEnfisema,
+    modificaCancer,
+    modificaDoencaCronica,
+    modificaHanseniase,
+    modificaTuberculose
+} from '../../../actions/F1Actions'
 
-export default class F1P3 extends Component {
+class F1P3 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
     }
@@ -19,74 +36,74 @@ export default class F1P3 extends Component {
                         <Text style={styles.titulo}>Acompanhamento</Text>
                         <CheckBox
                             title='Gestante'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.gestante}
+                            onPress={() => this.props.modificaGestante(!this.props.gestante)}
                         />
                         <CheckBox
                             title='Puérpera'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.puepera}
+                            onPress={() => this.props.modificaPuepera(!this.props.puepera)}
                         />
                         <CheckBox
                             title='Recém-nascido'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.recem_nascido}
+                            onPress={() => this.props.modificaRecemNascido(!this.props.recem_nascido)}
                         />
                         <CheckBox
                             title='Criança'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.crianca}
+                            onPress={() => this.props.modificaCrianca(!this.props.crianca)}
                         />
                         <Text style={styles.titulo}>Acompanhamentos especiais</Text>
                         <CheckBox
                             title='Pessoa com desnutrição'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.desnutricao}
+                            onPress={() => this.props.modificaDesnutricao(!this.props.desnutricao)}
                         />
                         <CheckBox
                             title='Pessoa em reabilitação ou com deficiência'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.reabilitacao_deficiente}
+                            onPress={() => this.props.modificaReabilitacaoDeficiente(!this.props.reabilitacao_deficiente)}
                         />
                         <CheckBox
                             title='Pessoa com hipertensão'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.hipertensao}
+                            onPress={() => this.props.modificaHispertensao(!this.props.hipertensao)}
                         />
                         <CheckBox
                             title='Pessoa com diabetes'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.diabetes}
+                            onPress={() => this.props.modificaDiabetes(!this.props.diabetes)}
                         />
                         <CheckBox
                             title='Pessoa com asma'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.asma}
+                            onPress={() => this.props.modificaAsma(!this.props.asma)}
                         />
                         <CheckBox
                             title='Pessoa com DPOC/enfisema'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.dpoc_enfisema}
+                            onPress={() => this.props.modificaDpocEnfisema(!this.props.dpoc_enfisema)}
                         />
                         <CheckBox
                             title='Pessoa com câncer'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.cancer}
+                            onPress={() => this.props.modificaCancer(!this.props.cancer)}
                         />
                         <CheckBox
                             title='Pessoa com outras doenças crônicas'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.doenca_cronica}
+                            onPress={() => this.props.modificaDoencaCronica(!this.props.doenca_cronica)}
                         />
                         <CheckBox
                             title='Pessoa com hanseníase'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.hanseniase}
+                            onPress={() => this.props.modificaHanseniase(!this.props.hanseniase)}
                         />
                         <CheckBox
                             title='Pessoa com tuberculose'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.tuberculose}
+                            onPress={() => this.props.modificaTuberculose(!this.props.tuberculose)}
                         />
                     </ScrollView>
                     <View style={styles.botoes}>
@@ -115,3 +132,41 @@ const styles = StyleSheet.create({
         marginVertical: 8
     },
 })
+
+const mapStateToProps = (state) => (
+    {
+        gestante: state.Form1Reducer.gestante,
+        puepera: state.Form1Reducer.puepera,
+        recem_nascido: state.Form1Reducer.recem_nascido,
+        crianca: state.Form1Reducer.crianca,
+        desnutricao: state.Form1Reducer.desnutricao,
+        reabilitacao_deficiente: state.Form1Reducer.reabilitacao_deficiente,
+        hipertensao: state.Form1Reducer.hipertensao,
+        diabetes: state.Form1Reducer.diabetes,
+        asma: state.Form1Reducer.asma,
+        dpoc_enfisema: state.Form1Reducer.dpoc_enfisema,
+        cancer: state.Form1Reducer.cancer,
+        doenca_cronica: state.Form1Reducer.doenca_cronica,
+        hanseniase: state.Form1Reducer.hanseniase,
+        tuberculose: state.Form1Reducer.tuberculose
+    }
+)
+
+export default connect (mapStateToProps,
+    {
+        modificaGestante,
+        modificaPuepera,
+        modificaRecemNascido,
+        modificaCrianca,
+        modificaDesnutricao,
+        modificaReabilitacaoDeficiente,
+        modificaHispertensao,
+        modificaDiabetes,
+        modificaAsma,
+        modificaDpocEnfisema,
+        modificaCancer,
+        modificaDoencaCronica,
+        modificaHanseniase,
+        modificaTuberculose
+    }
+)(F1P3)

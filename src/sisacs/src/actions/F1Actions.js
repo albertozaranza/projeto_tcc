@@ -18,6 +18,20 @@ import {
     MODIFICA_VACINA,
     MODIFICA_BOLSA_FAMILIA,
     //P3
+    MODIFICA_GESTANTE,
+    MODIFICA_PUEPERA,
+    MODIFICA_RECEM_NASCIDO,
+    MODIFICA_CRIANCA,
+    MODIFICA_DESNUTRICAO,
+    MODIFICA_REABILITACAO_DEFICIENTE,
+    MODIFICA_HIPERTENSAO,
+    MODIFICA_DIABETES,
+    MODIFICA_ASMA,
+    MODIFICA_DPOC_ENFISEMA,
+    MODIFICA_CANCER,
+    MODIFICA_DOENCA_CRONICA,
+    MODIFICA_HANSENIASE,
+    MODIFICA_TUBERCULOSE,
 } from './types'
 
 //P1
@@ -71,3 +85,46 @@ export const modificaBolsaFamilia = (value) => {
     return {type: MODIFICA_BOLSA_FAMILIA, payload: value}
 }
 //P3
+export const modificaGestante = (value) => {
+    return {type: MODIFICA_GESTANTE, payload: value}
+}
+export const modificaPuepera = (value) => {
+    return {type: MODIFICA_PUEPERA, payload: value}
+}
+export const modificaRecemNascido = (value) => {
+    return {type: MODIFICA_RECEM_NASCIDO, payload: value}
+}
+export const modificaCrianca = (value) => {
+    return {type: MODIFICA_CRIANCA, payload: value}
+}
+export const modificaDesnutricao = (value) => {
+    return {type: MODIFICA_DESNUTRICAO, payload: value}
+}
+export const modificaReabilitacaoDeficiente = (value) => {
+    return {type: MODIFICA_REABILITACAO_DEFICIENTE, payload: value}
+}
+export const modificaHispertensao = (value) => {
+    return {type: MODIFICA_HIPERTENSAO, payload: value}
+}
+export const modificaDiabetes = (value) => {
+    return {type: MODIFICA_DIABETES, payload: value}
+}
+export const modificaAsma = (value) => {
+    return {type: MODIFICA_ASMA, payload: value}
+}
+export const modificaDpocEnfisema = (value) => {
+    return {type: MODIFICA_DPOC_ENFISEMA, payload: value}
+}
+export const modificaCancer = (value) => {
+    return {type: MODIFICA_CANCER, payload: value}
+}
+export const modificaDoencaCronica = (value) => {
+    return {type: MODIFICA_DOENCA_CRONICA, payload: value}
+}
+export const modificaHanseniase = (value) => {
+    return {type: MODIFICA_HANSENIASE, payload: value}
+}
+export const modificaTuberculose = (value) => {
+    return {type: MODIFICA_TUBERCULOSE, payload: value}
+}
+//P4

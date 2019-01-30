@@ -18,6 +18,20 @@ import {
     MODIFICA_VACINA,
     MODIFICA_BOLSA_FAMILIA,
     //P3
+    MODIFICA_GESTANTE,
+    MODIFICA_PUEPERA,
+    MODIFICA_RECEM_NASCIDO,
+    MODIFICA_CRIANCA,
+    MODIFICA_DESNUTRICAO,
+    MODIFICA_REABILITACAO_DEFICIENTE,
+    MODIFICA_HIPERTENSAO,
+    MODIFICA_DIABETES,
+    MODIFICA_ASMA,
+    MODIFICA_DPOC_ENFISEMA,
+    MODIFICA_CANCER,
+    MODIFICA_DOENCA_CRONICA,
+    MODIFICA_HANSENIASE,
+    MODIFICA_TUBERCULOSE,
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -40,6 +54,21 @@ const INITIAL_STATE = {
     vacina: false,
     bolsa_familia: false,
     //P3
+    gestante: false,
+    puepera: false,
+    recem_nascido: false,
+    crianca: false,
+    desnutricao: false,
+    reabilitacao_deficiente: false,
+    hipertensao: false,
+    diabetes: false,
+    asma: false,
+    dpoc_enfisema: false,
+    cancer: false,
+    doenca_cronica: false,
+    hanseniase: false,
+    tuberculose: false,
+    //P4
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -79,6 +108,35 @@ export default (state = INITIAL_STATE, action) => {
         case MODIFICA_BOLSA_FAMILIA:
             return {...state, bolsa_familia: action.payload}
         //P3
+        case MODIFICA_GESTANTE:
+            return {...state, gestante: action.payload}
+        case MODIFICA_PUEPERA:
+            return {...state, puepera: action.payload}
+        case MODIFICA_RECEM_NASCIDO:
+            return {...state, recem_nascido: action.payload}
+        case MODIFICA_CRIANCA:
+            return {...state, crianca: action.payload}
+        case MODIFICA_DESNUTRICAO:
+            return {...state, desnutricao: action.payload}
+        case MODIFICA_REABILITACAO_DEFICIENTE:
+            return {...state, reabilitacao_deficiente: action.payload}
+        case MODIFICA_HIPERTENSAO:
+            return {...state, hipertensao: action.payload}
+        case MODIFICA_DIABETES:
+            return {...state, diabetes: action.payload}
+        case MODIFICA_ASMA:
+            return {...state, asma: action.payload}
+        case MODIFICA_DPOC_ENFISEMA:
+            return {...state, dpoc_enfisema: action.payload}
+        case MODIFICA_CANCER:
+            return {...state, cancer: action.payload}
+        case MODIFICA_DOENCA_CRONICA:
+            return {...state, doenca_cronica: action.payload}
+        case MODIFICA_HANSENIASE:
+            return {...state, hanseniase: action.payload}
+        case MODIFICA_TUBERCULOSE:
+            return {...state, tuberculose: action.payload}
+        //F1P4
         default:
             return state
     }
