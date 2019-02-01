@@ -46,6 +46,12 @@ import {
     MODIFICA_IMOVEL_EM_FOCO,
     MODIFICA_ACAO_MECANICA,
     MODIFICA_TRATAMENTO_FOCAL,
+    //P6
+    MODIFICA_EGRESSO_INTERNACAO,
+    MODIFICA_CONVITE,
+    MODIFICA_ORIENTACAO_PREVENCAO,
+    MODIFICA_OUTROS,
+    MODIFICA_DESFECHO
 } from './types'
 
 //P1
@@ -178,4 +184,20 @@ export const modificaAcaoMecanica = (value) => {
 }
 export const modificaTratamentoFocal = (value) => {
     return {type: MODIFICA_TRATAMENTO_FOCAL, payload: value}
+}
+//P6
+export const modificaEgressoInternacao = (value) => {
+    return {type: MODIFICA_EGRESSO_INTERNACAO, payload: value}
+}
+export const modificaConvite = (value) => {
+    return {type: MODIFICA_CONVITE, payload: value}
+}
+export const modificaOrientacaoPrevencao = (value) => {
+    return {type: MODIFICA_ORIENTACAO_PREVENCAO, payload: value}
+}
+export const modificaOutros = (value) => {
+    return {type: MODIFICA_OUTROS, payload: value}
+}
+export const modificaDesfecho = (value) => {
+    return {type: MODIFICA_DESFECHO, payload: value}
 }

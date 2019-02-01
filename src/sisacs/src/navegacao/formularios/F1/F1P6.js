@@ -3,6 +3,14 @@ import {StyleSheet, View, ScrollView, Button, Text} from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import RadioForm  from 'react-native-simple-radio-button'
 import NavigationService from '../../NavigationService'
+import {connect} from 'react-redux'
+import {
+    modificaEgressoInternacao,
+    modificaConvite,
+    modificaOrientacaoPrevencao,
+    modificaOutros,
+    modificaDesfecho
+} from '../../../actions/F1Actions'
 
 var radio_props_desfecho = [
     {label: 'Visita realizada', value: 0 },
@@ -30,23 +38,23 @@ export default class F1P6 extends Component {
                     <ScrollView contentContainerStyle={styles.container}>
                         <CheckBox
                             title='Egresso de Internação'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.egresso_internacao}
+                            onPress={() => this.props.modificaEgressoInternacao(!this.props.egresso_internacao)}
                         />
                         <CheckBox
                             title='Convite atividades coletivas/campanha de saúde'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.convite}
+                            onPress={() => this.props.convite(!this.props.convite)}
                         />
                         <CheckBox
                             title='Orientação / prevenção'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.orientacao_prevencao}
+                            onPress={() => this.props.modificaOrientacaoPrevencao(!this.props.orientacao_prevencao)}
                         />
                         <CheckBox
                             title='Outros'
-                            checked={this.state.checked}
-                            onPress={() => this.setState({checked: !this.state.checked})}
+                            checked={this.props.outros}
+                            onPress={() => this.props.modificaOutros(!this.props.outros)}
                         />
                         <Text style={styles.titulo}>Desfecho</Text>
                         <View style={styles.container}>
@@ -57,7 +65,7 @@ export default class F1P6 extends Component {
                                 labelHorizontal={true}
                                 animation={false}
                                 labelStyle={{fontSize: 20, marginRight: 20}}
-                                onPress={(value) => {this.setState({value:value})}}
+                                onPress={value => this.props.modificaDesfecho(value)}
                             />
                         </View>
                     </ScrollView>
@@ -87,3 +95,23 @@ const styles = StyleSheet.create({
         marginVertical: 8
     },
 })
+
+const mapStateToProps = (state) => (
+    {
+        egresso_internacao: state.Form1Reducer.egresso_internacao,
+        convite: state.Form1Reducer.convite,
+        orientacao_prevencao: state.Form1Reducer.orientacao_prevencao,
+        outros: state.Form1Reducer.outros,
+        desfecho: state.Form1Reducer.desfecho
+    }
+)
+
+export default connect (mapStateToProps,
+    {
+        modificaEgressoInternacao,
+        modificaConvite,
+        modificaOrientacaoPrevencao,
+        modificaOutros,
+        modificaDesfecho
+    }
+)(F1P6)

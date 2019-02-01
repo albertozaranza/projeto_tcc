@@ -46,6 +46,12 @@ import {
     MODIFICA_IMOVEL_EM_FOCO,
     MODIFICA_ACAO_MECANICA,
     MODIFICA_TRATAMENTO_FOCAL,
+    //P6
+    MODIFICA_EGRESSO_INTERNACAO,
+    MODIFICA_CONVITE,
+    MODIFICA_ORIENTACAO_PREVENCAO,
+    MODIFICA_OUTROS,
+    MODIFICA_DESFECHO
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -96,6 +102,12 @@ const INITIAL_STATE = {
     imovel_em_foco: false,
     acao_mecanica: false,
     tratamento_focal: false,
+    //P6
+    egresso_internacao: false,
+    convite: false,
+    orientacao_prevencao: false,
+    outros: false,
+    desfecho: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -189,6 +201,17 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, acao_mecanica: action.payload}
         case MODIFICA_TRATAMENTO_FOCAL:
             return {...state, tratamento_focal: action.payload}
+        //P6
+        case MODIFICA_EGRESSO_INTERNACAO:
+            return {...state, egresso_internacao: action.payload}
+        case MODIFICA_CONVITE:
+            return {...state, convite: action.payload}
+        case MODIFICA_ORIENTACAO_PREVENCAO:
+            return {...state, orientacao_prevencao: action.payload}
+        case MODIFICA_OUTROS:
+            return {...state, outros: action.payload}
+        case MODIFICA_DESFECHO:
+            return {...state, desfecho: action.payload}
         default:
             return state
     }
