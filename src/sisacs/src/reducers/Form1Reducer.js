@@ -32,6 +32,15 @@ import {
     MODIFICA_DOENCA_CRONICA,
     MODIFICA_HANSENIASE,
     MODIFICA_TUBERCULOSE,
+    //P4
+    MODIFICA_SINTOMATICOS_RESPIRATORIOS,
+    MODIFICA_TABAGISTA,
+    MODIFICA_DOMICILIADOS_ACAMADOS,
+    MODIFICA_VULNERABILIDADE_SOCIAL,
+    MODIFICA_CONDICIONALIDADES_BOLSA_FAMILIA,
+    MODIFICA_SAUDE_MENTAL,
+    MODIFICA_USUARIO_ALCOOLICO,
+    MODIFICA_USUARIO_DROGAS,
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -69,6 +78,14 @@ const INITIAL_STATE = {
     hanseniase: false,
     tuberculose: false,
     //P4
+    sintomaticos_respiratorios: false,
+    tabagista: false,
+    domiciliados_acamados: false,
+    vulnerabilidade_social: false,
+    condicionalidades_bolsa_família: false,
+    saude_mental: false,
+    usuario_alcoolico: false,
+    usuario_drogas: false,
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -137,6 +154,22 @@ export default (state = INITIAL_STATE, action) => {
         case MODIFICA_TUBERCULOSE:
             return {...state, tuberculose: action.payload}
         //F1P4
+        case MODIFICA_SINTOMATICOS_RESPIRATORIOS:
+            return {...state, sintomaticos_respiratorios: action.payload}
+        case MODIFICA_TABAGISTA:
+            return {...state, tabagista: action.payload}
+        case MODIFICA_DOMICILIADOS_ACAMADOS:
+            return {...state, domiciliados_acamados: action.payload}
+        case MODIFICA_VULNERABILIDADE_SOCIAL:
+            return {...state, vulnerabilidade_social: action.payload}
+        case MODIFICA_CONDICIONALIDADES_BOLSA_FAMILIA:
+            return {...state, condicionalidades_bolsa_família: action.payload}
+        case MODIFICA_SAUDE_MENTAL:
+            return {...state, saude_mental: action.payload}
+        case MODIFICA_USUARIO_ALCOOLICO:
+            return {...state, usuario_alcoolico: action.payload}
+        case MODIFICA_USUARIO_DROGAS:
+            return {...state, usuario_drogas: action.payload}
         default:
             return state
     }

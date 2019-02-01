@@ -32,6 +32,15 @@ import {
     MODIFICA_DOENCA_CRONICA,
     MODIFICA_HANSENIASE,
     MODIFICA_TUBERCULOSE,
+    //P4
+    MODIFICA_SINTOMATICOS_RESPIRATORIOS,
+    MODIFICA_TABAGISTA,
+    MODIFICA_DOMICILIADOS_ACAMADOS,
+    MODIFICA_VULNERABILIDADE_SOCIAL,
+    MODIFICA_CONDICIONALIDADES_BOLSA_FAMILIA,
+    MODIFICA_SAUDE_MENTAL,
+    MODIFICA_USUARIO_ALCOOLICO,
+    MODIFICA_USUARIO_DROGAS,
 } from './types'
 
 //P1
@@ -128,3 +137,27 @@ export const modificaTuberculose = (value) => {
     return {type: MODIFICA_TUBERCULOSE, payload: value}
 }
 //P4
+export const modificaSintomaticosRespiratorios = (value) => {
+    return {type: MODIFICA_SINTOMATICOS_RESPIRATORIOS, payload: value}
+}
+export const modificaTabagista = (value) => {
+    return {type: MODIFICA_TABAGISTA, payload: value}
+}
+export const modificaDomiciliadosAcamados = (value) => {
+    return {type: MODIFICA_DOMICILIADOS_ACAMADOS, payload: value}
+}
+export const modificaVulnerabilidadeSocial = (value) => {
+    return {type: MODIFICA_VULNERABILIDADE_SOCIAL, payload: value}
+}
+export const modificaCondicionalidadesBolsaFamilia = (value) => {
+    return {type: MODIFICA_CONDICIONALIDADES_BOLSA_FAMILIA, payload: value}
+}
+export const modificaSaudeMental = (value) => {
+    return {type: MODIFICA_SAUDE_MENTAL, payload: value}
+}
+export const modificaUsuarioAlcoolico = (value) => {
+    return {type: MODIFICA_USUARIO_ALCOOLICO, payload: value}
+}
+export const modificaUsuarioDrogas = (value) => {
+    return {type: MODIFICA_USUARIO_DROGAS, payload: value}
+}
