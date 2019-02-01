@@ -41,6 +41,11 @@ import {
     MODIFICA_SAUDE_MENTAL,
     MODIFICA_USUARIO_ALCOOLICO,
     MODIFICA_USUARIO_DROGAS,
+    //P5
+    MODIFICA_ACAO_EDUCATIVA,
+    MODIFICA_IMOVEL_EM_FOCO,
+    MODIFICA_ACAO_MECANICA,
+    MODIFICA_TRATAMENTO_FOCAL,
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -86,6 +91,11 @@ const INITIAL_STATE = {
     saude_mental: false,
     usuario_alcoolico: false,
     usuario_drogas: false,
+    //P5
+    acao_educativa: false,
+    imovel_em_foco: false,
+    acao_mecanica: false,
+    tratamento_focal: false,
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -153,7 +163,7 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, hanseniase: action.payload}
         case MODIFICA_TUBERCULOSE:
             return {...state, tuberculose: action.payload}
-        //F1P4
+        //P4
         case MODIFICA_SINTOMATICOS_RESPIRATORIOS:
             return {...state, sintomaticos_respiratorios: action.payload}
         case MODIFICA_TABAGISTA:
@@ -170,6 +180,15 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, usuario_alcoolico: action.payload}
         case MODIFICA_USUARIO_DROGAS:
             return {...state, usuario_drogas: action.payload}
+        //P5
+        case MODIFICA_ACAO_EDUCATIVA:
+            return {...state, acao_educativa: action.payload}
+        case MODIFICA_IMOVEL_EM_FOCO:
+            return {...state, imovel_em_foco: action.payload}
+        case MODIFICA_ACAO_MECANICA:
+            return {...state, acao_mecanica: action.payload}
+        case MODIFICA_TRATAMENTO_FOCAL:
+            return {...state, tratamento_focal: action.payload}
         default:
             return state
     }

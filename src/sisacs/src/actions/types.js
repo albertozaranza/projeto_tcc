@@ -40,3 +40,8 @@ export const MODIFICA_CONDICIONALIDADES_BOLSA_FAMILIA = 'modifica_condicionalida
 export const MODIFICA_SAUDE_MENTAL = 'modifica_saude_mental'
 export const MODIFICA_USUARIO_ALCOOLICO = 'modifica_usuario_alcoolico'
 export const MODIFICA_USUARIO_DROGAS = 'modifica_usuario_drogas'
+//F1P5
+export const MODIFICA_ACAO_EDUCATIVA = 'modifica_acao_educativa'
+export const MODIFICA_IMOVEL_EM_FOCO = 'modifica_imovel_em_foco'
+export const MODIFICA_ACAO_MECANICA = 'modifica_acao_mecanica'
+export const MODIFICA_TRATAMENTO_FOCAL = 'modifica_tratamento_focal'

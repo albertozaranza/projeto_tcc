@@ -41,6 +41,11 @@ import {
     MODIFICA_SAUDE_MENTAL,
     MODIFICA_USUARIO_ALCOOLICO,
     MODIFICA_USUARIO_DROGAS,
+    //P5
+    MODIFICA_ACAO_EDUCATIVA,
+    MODIFICA_IMOVEL_EM_FOCO,
+    MODIFICA_ACAO_MECANICA,
+    MODIFICA_TRATAMENTO_FOCAL,
 } from './types'
 
 //P1
@@ -160,4 +165,17 @@ export const modificaUsuarioAlcoolico = (value) => {
 }
 export const modificaUsuarioDrogas = (value) => {
     return {type: MODIFICA_USUARIO_DROGAS, payload: value}
+}
+//P5
+export const modificaAcaoEducativa = (value) => {
+    return {type: MODIFICA_ACAO_EDUCATIVA, payload: value}
+}
+export const modificaImovelEmFoco = (value) => {
+    return {type: MODIFICA_IMOVEL_EM_FOCO, payload: value}
+}
+export const modificaAcaoMecanica = (value) => {
+    return {type: MODIFICA_ACAO_MECANICA, payload: value}
+}
+export const modificaTratamentoFocal = (value) => {
+    return {type: MODIFICA_TRATAMENTO_FOCAL, payload: value}
 }
