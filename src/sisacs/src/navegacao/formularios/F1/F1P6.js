@@ -18,7 +18,7 @@ var radio_props_desfecho = [
     {label: 'Ausente', value: 2 }
 ]
 
-export default class F1P6 extends Component {
+class F1P6 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
     }
@@ -28,7 +28,7 @@ export default class F1P6 extends Component {
     }
     fp = () => {
         alert('Formulário submetido com sucesso!')
-        return NavigationService.reset('Home')
+        return NavigationService.reset('TelaInicial')
     }
     render() {
         const { goBack } = this.props.navigation
@@ -44,7 +44,7 @@ export default class F1P6 extends Component {
                         <CheckBox
                             title='Convite atividades coletivas/campanha de saúde'
                             checked={this.props.convite}
-                            onPress={() => this.props.convite(!this.props.convite)}
+                            onPress={() => this.props.modificaConvite(!this.props.convite)}
                         />
                         <CheckBox
                             title='Orientação / prevenção'

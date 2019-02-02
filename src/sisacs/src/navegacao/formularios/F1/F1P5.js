@@ -9,7 +9,7 @@ import {
     modificaTratamentoFocal
 } from '../../../actions/F1Actions'
 
-export default class F1P5 extends Component {
+class F1P5 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
     }
