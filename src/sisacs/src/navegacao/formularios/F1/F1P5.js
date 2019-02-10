@@ -77,7 +77,7 @@ const mapStateToProps = (state) => (
         acao_educativa: state.Form1Reducer.acao_educativa,
         imovel_em_foco: state.Form1Reducer.imovel_em_foco,
         acao_mecanica: state.Form1Reducer.acao_mecanica,
-        tratamento_focal: state.Form1Reducer.tratamento_focal,
+        tratamento_focal: state.Form1Reducer.tratamento_focal
     }
 )
 

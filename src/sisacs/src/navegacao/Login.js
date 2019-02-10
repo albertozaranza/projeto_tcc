@@ -16,7 +16,7 @@ export default class Login extends Component {
           erroLogin: '',
           loadingLogin: false
         }
-      }
+    }
     focusNextField = (nextField) => {
         this.refs[nextField].focus()
     }

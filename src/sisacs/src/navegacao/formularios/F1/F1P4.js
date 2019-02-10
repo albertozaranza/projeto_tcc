@@ -105,7 +105,7 @@ const mapStateToProps = (state) => (
         condicionalidades_bolsa_família: state.Form1Reducer.condicionalidades_bolsa_família,
         saude_mental: state.Form1Reducer.saude_mental,
         usuario_alcoolico: state.Form1Reducer.usuario_alcoolico,
-        usuario_drogas: state.Form1Reducer.usuario_drogas,
+        usuario_drogas: state.Form1Reducer.usuario_drogas
     }
 )
 

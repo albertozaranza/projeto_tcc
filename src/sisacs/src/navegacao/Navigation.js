@@ -16,6 +16,9 @@ const AppStack = createStackNavigator(
     F1P4,
     F1P5,
     F1P6
+  },
+  {
+    initialRouteName: "F1P6"
   }
 )
 
