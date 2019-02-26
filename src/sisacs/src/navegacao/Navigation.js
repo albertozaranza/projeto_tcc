@@ -18,7 +18,7 @@ const AppStack = createStackNavigator(
     F1P6
   },
   {
-    initialRouteName: "F1P6"
+    initialRouteName: "TelaInicial"
   }
 )
 

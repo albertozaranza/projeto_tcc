@@ -17,7 +17,7 @@ export default class TelaInicial extends Component {
         return (
             <View style={styles.container}>
                 <Text style={{fontSize: 20}}>
-                    Bem vindo, agente!
+                    Bem vindo, {firebase.auth().currentUser.email}
                 </Text>
                 <Button title="Ficha de Visita Domiciliar e Territorial" onPress={() => this.props.navigation.navigate('F1P1')}/>
             </View>
