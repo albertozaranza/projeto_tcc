@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {AppContainer} from './src/navegacao/Navigation'
+import {View, ActivityIndicator} from 'react-native'
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
 import reducers from './src/reducers'
@@ -7,6 +8,14 @@ import firebase from '@firebase/app'
 import ReduxThunk from 'redux-thunk'
 import NavigationService from './src/navegacao/NavigationService'
 import Login from './src/navegacao/Login'
+import {
+  API_KEY,
+  AUTH_DOMAIN,
+  DATABASE_URL,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  MESSAGING_SENDER_ID
+} from './firebaseConfig'
 
 export default class App extends Component {
   constructor() {
@@ -17,13 +26,13 @@ export default class App extends Component {
     }
   }
   componentWillMount(){
-    let config = {
-      apiKey: "AIzaSyAYnCZO2kPYfQa7A29_BoPPQuRvZFgR1Cc",
-      authDomain: "sisacs-tcc.firebaseapp.com",
-      databaseURL: "https://sisacs-tcc.firebaseio.com",
-      projectId: "sisacs-tcc",
-      storageBucket: "sisacs-tcc.appspot.com",
-      messagingSenderId: "549791658870"
+    const config = {
+      apiKey: API_KEY,
+      authDomain: AUTH_DOMAIN,
+      databaseURL: DATABASE_URL,
+      projectId: PROJECT_ID,
+      storageBucket: STORAGE_BUCKET,
+      messagingSenderId: MESSAGING_SENDER_ID
     }
     if (!firebase.apps.length) {
       firebase.initializeApp(config)
@@ -37,7 +46,14 @@ export default class App extends Component {
     })
   }
   render() {
-    if (this.state.loading)  return null
+    if (this.state.loading){
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator size='large' color='#28a745' />
+        </View>
+        
+      )
+    }  
     if (!this.state.authenticated) {
       return (
         <Login />

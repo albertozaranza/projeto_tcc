@@ -16,10 +16,15 @@ import {
 class F1P4 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
-    }
-    constructor(props) {
-        super(props)
-        this.state = { checked: false }
+        headerTintColor: '#ffffff',
+        headerStyle: {
+            backgroundColor: '#28a745',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 3
+        },
+        headerTitleStyle: {
+            fontSize: 18
+        }
     }
     render() {
         const { goBack } = this.props.navigation
@@ -31,47 +36,47 @@ class F1P4 extends Component {
                         <CheckBox
                             title='Sintomáticos respiratórios'
                             checked={this.props.sintomaticos_respiratorios}
-                            onPress={() => this.props.modificaSintomaticosRespiratorios(!this.props.sintomaticos_respiratorios)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaSintomaticosRespiratorios(!this.props.sintomaticos_respiratorios)}/>
                         <CheckBox
                             title='Tabagista'
                             checked={this.props.tabagista}
-                            onPress={() => this.props.modificaTabagista(!this.props.tabagista)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaTabagista(!this.props.tabagista)}/>
                         <CheckBox
                             title='Domiciliados / Acamados'
                             checked={this.props.domiciliados_acamados}
-                            onPress={() => this.props.modificaDomiciliadosAcamados(!this.props.domiciliados_acamados)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaDomiciliadosAcamados(!this.props.domiciliados_acamados)}/>
                         <CheckBox
                             title='Condições de vulnerabilidade social'
                             checked={this.props.vulnerabilidade_social}
-                            onPress={() => this.props.modificaVulnerabilidadeSocial(!this.props.vulnerabilidade_social)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaVulnerabilidadeSocial(!this.props.vulnerabilidade_social)}/>
                         <CheckBox
                             title='Condicionalidades do Bolsa Família'
                             checked={this.props.condicionalidades_bolsa_família}
-                            onPress={() => this.props.modificaCondicionalidadesBolsaFamilia(!this.props.condicionalidades_bolsa_família)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaCondicionalidadesBolsaFamilia(!this.props.condicionalidades_bolsa_família)}/>
                         <CheckBox
                             title='Saúde mental'
                             checked={this.props.saude_mental}
-                            onPress={() => this.props.modificaSaudeMental(!this.props.saude_mental)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaSaudeMental(!this.props.saude_mental)}/>
                         <CheckBox
                             title='Usuário de álcool'
                             checked={this.props.usuario_alcoolico}
-                            onPress={() => this.props.modificaUsuarioAlcoolico(!this.props.usuario_alcoolico)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaUsuarioAlcoolico(!this.props.usuario_alcoolico)}/>
                         <CheckBox
                             title='Usuário de outras drogas'
                             checked={this.props.usuario_drogas}
-                            onPress={() => this.props.modificaUsuarioDrogas(!this.props.usuario_drogas)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaUsuarioDrogas(!this.props.usuario_drogas)}/>
                     </ScrollView>
                     <View style={styles.botoes}>
-                            <Button title='Voltar' onPress={() => goBack()}/>
-                            <Button title='Próximo' onPress={() => this.props.navigation.navigate('F1P5')}/>
+                            <Button color='#28a745' title='Voltar' onPress={() => goBack()}/>
+                            <Button color='#28a745' title='Próximo' onPress={() => this.props.navigation.navigate('F1P5')}/>
                     </View>
                 </ScrollView>
             </View>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {StyleSheet, Text, View, TextInput, Button, Picker} from 'react-native'
-import RadioForm  from 'react-native-simple-radio-button'
+import RadioForm from 'react-native-simple-radio-button'
 import { CheckBox } from 'react-native-elements'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { MaskService } from 'react-native-masked-text'
@@ -11,7 +11,7 @@ import {
     modificaTipoImovel,
     modificaNumeroProntuario,
     modificaCNS,
-    modificaData,
+    modificaDataNascimento,
     modificaSexo,
     modificaPeso,
     modificaAltura,    
@@ -47,25 +47,23 @@ var options = [
 
 class F1P1 extends Component {
     static navigationOptions = {
-        title: 'Informações Básicas'
+        title: 'Informações Básicas',
+        headerTintColor: '#ffffff',
+        headerStyle: {
+            backgroundColor: '#28a745',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 3
+        },
+        headerTitleStyle: {
+            fontSize: 18
+        }
     }
     focusNextField = (nextField) => {
         this.refs[nextField].focus()
     }
-    getInitialChoice = () => {
-        let date = new Date()
-        let n = date.getHours()
-        if(n >= 0 && n < 12){
-            return 0
-        }else if( n >= 12 && n < 18 ){
-            return 1
-        }else if(n >= 18 && n < 23){
-            return 2
-        }
-    }
     mascararData = (value) => {
         let novaData = MaskService.toMask('datetime', value, {format: 'DD/MM/YYYY'})
-        this.props.modificaData(novaData)
+        this.props.modificaDataNascimento(novaData)
     }
     render() {
         return(
@@ -75,13 +73,14 @@ class F1P1 extends Component {
                     <View style={{alignItems:'center', justifyContent: 'center'}}>
                         <RadioForm
                             radio_props={radio_props_turno}
-                            initial={this.getInitialChoice()}
+                            initial={this.props.turno}
                             formHorizontal={true}
                             labelHorizontal={true}
                             animation={false}
                             labelStyle={{fontSize: 18, marginRight: 20}}
-                            onPress={value => this.props.modificaTurno(value)}
-                        />
+                            buttonColor={'#28a745'}
+                            selectedButtonColor={'#28a745'}
+                            onPress={value => this.props.modificaTurno(value)}/>
                     </View>
                     <Text style={styles.titulo}>Microárea</Text>
                     <TextInput
@@ -90,8 +89,7 @@ class F1P1 extends Component {
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='1'
-                        onSubmitEditing={() => this.focusNextField('2')}
-                    />
+                        onSubmitEditing={() => this.focusNextField('2')}/>
                     <Text style={styles.titulo}>Tipo do Imóvel</Text>
                     <View style={styles.pickerContainer}>
                         <Picker
@@ -99,7 +97,7 @@ class F1P1 extends Component {
                             selectedValue={this.props.tipo_imovel}
                             onValueChange={selected => this.props.modificaTipoImovel(selected)}>
                                 {options.map((item, index) => {
-                                    return (< Picker.Item label={item} value={index} key={index} />)
+                                    return (< Picker.Item label={item} value={index} key={index}/>)
                                 })}
                         </Picker>
                     </View>
@@ -110,8 +108,7 @@ class F1P1 extends Component {
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='2'
-                        onSubmitEditing={() => this.focusNextField('3')}
-                    />
+                        onSubmitEditing={() => this.focusNextField('3')}/>
                     <Text style={styles.titulo}>CNS do Cidadão</Text>
                     <TextInput 
                         value={this.props.cns}
@@ -119,28 +116,27 @@ class F1P1 extends Component {
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='3'
-                        onSubmitEditing={() => this.focusNextField('4')}
-                    />
+                        onSubmitEditing={() => this.focusNextField('4')}/>
                     <Text style={styles.titulo}>Data de Nascimento</Text>
                     <TextInput 
-                        value={this.props.data}
+                        value={this.props.data_nascimento}
                         onChangeText={value => this.mascararData(value)}
                         style={styles.inputContainer}
                         returnKeyType={'next'}
                         ref='4'
-                        onSubmitEditing={() => this.focusNextField('5')}
-                    />
+                        onSubmitEditing={() => this.focusNextField('5')}/>
                     <Text style={styles.titulo}>Sexo</Text>
                     <View style={{alignItems:'center', justifyContent: 'center'}}>
                         <RadioForm
                             radio_props={radio_props_sexo}
-                            initial={0}
+                            initial={this.props.sexo}
                             formHorizontal={true}
                             labelHorizontal={true}
                             animation={false}
                             labelStyle={{fontSize: 18, marginRight: 20}}
-                            onPress={(value) => this.props.modificaSexo(value)}
-                        />
+                            buttonColor={'#28a745'}
+                            selectedButtonColor={'#28a745'}
+                            onPress={(value) => this.props.modificaSexo(value)}/>
                     </View>
                     <Text style={styles.titulo}>Peso (kg)</Text>
                     <TextInput
@@ -150,8 +146,7 @@ class F1P1 extends Component {
                         keyboardType={'number-pad'}
                         returnKeyType={'next'}
                         ref='5'
-                        onSubmitEditing={() => this.focusNextField('6')}
-                    />
+                        onSubmitEditing={() => this.focusNextField('6')}/>
                     <Text style={styles.titulo}>Altura (cm)</Text>
                     <TextInput
                         value={this.props.altura}
@@ -159,17 +154,19 @@ class F1P1 extends Component {
                         style={styles.inputContainer}
                         keyboardType={'number-pad'}
                         returnKeyType={'done'}
-                        ref='6'
-                    />
+                        ref='6'/>
                     <View style={{marginTop: 16}}>
                         <CheckBox
                             title='Visita compartilhada com outro profissional'
                             checked={this.props.visita_compartilhada}
-                            onPress={() => this.props.modificaVisitaCompartilhada(!this.props.visita_compartilhada)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaVisitaCompartilhada(!this.props.visita_compartilhada)}/>
                     </View>
                     <View style={styles.botao}>
-                        <Button title='Próximo' onPress={() => this.props.navigation.navigate('F1P2')}/>
+                        <Button 
+                            color='#28a745'
+                            title='Próximo' 
+                            onPress={() => this.props.navigation.navigate('F1P2')}/>
                     </View>
                 </KeyboardAwareScrollView>
             </View>
@@ -223,7 +220,7 @@ const mapStateToProps = (state) => (
         tipo_imovel: state.Form1Reducer.tipo_imovel,
         numero_prontuario: state.Form1Reducer.numero_prontuario,
         cns: state.Form1Reducer.cns,
-        data: state.Form1Reducer.data,
+        data_nascimento: state.Form1Reducer.data_nascimento,
         sexo: state.Form1Reducer.sexo,
         peso: state.Form1Reducer.peso,
         altura: state.Form1Reducer.altura,
@@ -238,7 +235,7 @@ export default connect (mapStateToProps,
         modificaTipoImovel,
         modificaNumeroProntuario,
         modificaCNS,
-        modificaData,
+        modificaDataNascimento,
         modificaSexo,
         modificaPeso,
         modificaAltura,    

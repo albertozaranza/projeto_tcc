@@ -14,6 +14,15 @@ import {
 class F1P2 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
+        headerTintColor: '#ffffff',
+        headerStyle: {
+            backgroundColor: '#28a745',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 3
+        },
+        headerTitleStyle: {
+            fontSize: 18
+        }
     }
     render() {
         const { goBack } = this.props.navigation
@@ -24,38 +33,38 @@ class F1P2 extends Component {
                         <CheckBox
                             title='Cadastramento / Atualização'
                             checked={this.props.cadastramento_atualizacao}
-                            onPress={() => this.props.modificaCadastramentoAtualizacao(!this.props.cadastramento_atualizacao)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaCadastramentoAtualizacao(!this.props.cadastramento_atualizacao)}/>
                         <CheckBox
                             title='Visita periódica'
                             checked={this.props.visita_periodica}
-                            onPress={() => this.props.modificaVisitaPeriodica(!this.props.visita_periodica)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaVisitaPeriodica(!this.props.visita_periodica)}/>
                         <Text style={styles.titulo}>Busca ativa</Text>
                         <CheckBox
                             title='Consulta'
                             checked={this.props.consulta}
-                            onPress={() => this.props.modificaConsulta(!this.props.consulta)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaConsulta(!this.props.consulta)}/>
                         <CheckBox
                             title='Exame'
                             checked={this.props.exame}
-                            onPress={() => this.props.modificaExame(!this.props.exame)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaExame(!this.props.exame)}/>
                         <CheckBox
                             title='Vacina'
                             checked={this.props.vacina}
-                            onPress={() => this.props.modificaVacina(!this.props.vacina)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaVacina(!this.props.vacina)}/>
                         <CheckBox
                             title='Condicionalidades do Bolsa Família'
                             checked={this.props.bolsa_familia}
-                            onPress={() => this.props.modificaBolsaFamilia(!this.props.bolsa_familia)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaBolsaFamilia(!this.props.bolsa_familia)}/>
                     </ScrollView>
                     <View style={styles.botoes}>
-                            <Button title='Voltar' onPress={() => goBack()}/>
-                            <Button title='Próximo' onPress={() => this.props.navigation.navigate('F1P3')}/>
+                            <Button color='#28a745' title='Voltar' onPress={() => goBack()}/>
+                            <Button color='#28a745' title='Próximo' onPress={() => this.props.navigation.navigate('F1P3')}/>
                     </View> 
                 </ScrollView>
             </View>

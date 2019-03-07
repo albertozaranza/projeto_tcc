@@ -12,10 +12,15 @@ import {
 class F1P5 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
-    }
-    constructor(props) {
-        super(props)
-        this.state = { checked: false }
+        headerTintColor: '#ffffff',
+        headerStyle: {
+            backgroundColor: '#28a745',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 3
+        },
+        headerTitleStyle: {
+            fontSize: 18
+        }
     }
     render() {
         const { goBack } = this.props.navigation
@@ -27,27 +32,27 @@ class F1P5 extends Component {
                         <CheckBox
                             title='Ação educativa'
                             checked={this.props.acao_educativa}
-                            onPress={() => this.props.modificaAcaoEducativa(!this.props.acao_educativa)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaAcaoEducativa(!this.props.acao_educativa)}/>
                         <CheckBox
                             title='Imóvel com foco'
                             checked={this.props.imovel_em_foco}
-                            onPress={() => this.props.modificaImovelEmFoco(!this.props.imovel_em_foco)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaImovelEmFoco(!this.props.imovel_em_foco)}/>
                         <CheckBox
                             title='Ação mecânica'
                             checked={this.props.acao_mecanica}
-                            onPress={() => this.props.modificaAcaoMecanica(!this.props.acao_mecanica)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaAcaoMecanica(!this.props.acao_mecanica)}/>
                         <CheckBox
                             title='Tratamento focal'
                             checked={this.props.tratamento_focal}
-                            onPress={() => this.props.modificaTratamentoFocal(!this.props.tratamento_focal)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaTratamentoFocal(!this.props.tratamento_focal)}/>
                     </ScrollView>
                     <View style={styles.botoes}>
-                            <Button title='Voltar' onPress={() => goBack()}/>
-                            <Button title='Próximo' onPress={() => this.props.navigation.navigate('F1P6')}/>
+                            <Button color='#28a745' title='Voltar' onPress={() => goBack()}/>
+                            <Button color='#28a745' title='Próximo' onPress={() => this.props.navigation.navigate('F1P6')}/>
                     </View>
                 </ScrollView>
             </View>

@@ -6,11 +6,22 @@ require('firebase/auth')
 export default class TelaInicial extends Component {
     static navigationOptions = () => ({
         title: 'SISACS',
+        headerTintColor: '#ffffff',
+        headerStyle: {
+            backgroundColor: '#28a745',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 3
+        },
+        headerTitleStyle: {
+            fontSize: 18
+        },
         headerRight: 
             <TouchableOpacity
                 style={{margin: 10, padding: 10}}
                 onPress={() => firebase.auth().signOut()}>
-                <Text>Sair</Text>
+                <Text style={{color: 'white'}}>
+                    Sair
+                </Text>
             </TouchableOpacity>
     })
     render() {
@@ -19,7 +30,10 @@ export default class TelaInicial extends Component {
                 <Text style={{fontSize: 20}}>
                     Bem vindo, {firebase.auth().currentUser.email}
                 </Text>
-                <Button title="Ficha de Visita Domiciliar e Territorial" onPress={() => this.props.navigation.navigate('F1P1')}/>
+                <Button 
+                    color='#28a745'
+                    title="Ficha de Visita Domiciliar e Territorial" 
+                    onPress={() => this.props.navigation.navigate('F1P1')}/>
             </View>
         )
     }

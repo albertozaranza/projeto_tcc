@@ -5,7 +5,7 @@ import {
     MODIFICA_TIPO_IMOVEL,
     MODIFICA_NUMERO_PRONTUARIO,
     MODIFICA_CNS,
-    MODIFICA_DATA,
+    MODIFICA_DATA_NASCIMENTO,
     MODIFICA_SEXO,
     MODIFICA_PESO,
     MODIFICA_ALTURA,
@@ -54,15 +54,27 @@ import {
     MODIFICA_DESFECHO
 } from '../actions/types'
 
+getInitialChoice = () => {
+    let date = new Date()
+    let n = date.getHours()
+    if(n >= 0 && n < 12){
+        return 0
+    }else if( n >= 12 && n < 18 ){
+        return 1
+    }else if(n >= 18 && n < 23){
+        return 2
+    }
+}
+
 const INITIAL_STATE = {
     //P1
-    turno: '',
+    turno: getInitialChoice(),
     microarea: '',
-    tipo_imovel: '',
+    tipo_imovel: 'Domicilio',
     numero_prontuario: '',
     cns: '',
-    data: '',
-    sexo: '',
+    data_nascimento: '',
+    sexo: 0,
     peso: '',
     altura: '',
     visita_compartilhada: false,
@@ -107,7 +119,7 @@ const INITIAL_STATE = {
     convite: false,
     orientacao_prevencao: false,
     outros: false,
-    desfecho: false
+    desfecho: 0
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -123,8 +135,8 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, numero_prontuario: action.payload}
         case MODIFICA_CNS:
             return {...state, cns: action.payload}
-        case MODIFICA_DATA:
-            return {...state, data: action.payload}    
+        case MODIFICA_DATA_NASCIMENTO:
+            return {...state, data_nascimento: action.payload}    
         case MODIFICA_SEXO:
             return {...state, sexo: action.payload}    
         case MODIFICA_PESO:

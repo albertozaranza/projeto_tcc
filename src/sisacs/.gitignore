@@ -57,3 +57,6 @@ buck-out/
 
 # Script para abrir o emulador
 script.bat
+
+# firebase configs
+firebaseConfig.js

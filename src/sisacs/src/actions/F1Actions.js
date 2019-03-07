@@ -5,7 +5,7 @@ import {
     MODIFICA_TIPO_IMOVEL,
     MODIFICA_NUMERO_PRONTUARIO,
     MODIFICA_CNS,
-    MODIFICA_DATA,
+    MODIFICA_DATA_NASCIMENTO,
     MODIFICA_SEXO,
     MODIFICA_PESO,
     MODIFICA_ALTURA,
@@ -70,8 +70,8 @@ export const modificaNumeroProntuario = (value) => {
 export const modificaCNS = (value) => {
     return {type: MODIFICA_CNS, payload: value}
 }
-export const modificaData = (value) => {
-    return {type: MODIFICA_DATA, payload: value}
+export const modificaDataNascimento = (value) => {
+    return {type: MODIFICA_DATA_NASCIMENTO, payload: value}
 }
 export const modificaSexo = (value) => {
     return {type: MODIFICA_SEXO, payload: value}

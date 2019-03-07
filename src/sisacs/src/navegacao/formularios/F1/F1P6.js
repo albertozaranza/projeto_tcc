@@ -4,6 +4,8 @@ import { CheckBox } from 'react-native-elements'
 import RadioForm  from 'react-native-simple-radio-button'
 import firebase from '@firebase/app'
 require('firebase/database')
+require('firebase/auth')
+import base64 from 'react-native-base64'
 import {connect} from 'react-redux'
 import {
     modificaEgressoInternacao,
@@ -26,34 +28,69 @@ var radio_props_desfecho = [
 class F1P6 extends Component {
     static navigationOptions = {
         title: 'Motivo da visita',
+        headerTintColor: '#ffffff',
+        headerStyle: {
+            backgroundColor: '#28a745',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 3
+        },
+        headerTitleStyle: {
+            fontSize: 18
+        }
     }
     constructor(props) {
         super(props)
-        this.state = { loadingLogin: false }
+        this.state = { loading: false }
     }
     renderBotaoEnvio = () => {
-        if(this.state.loadingLogin == true){
+        if(this.state.loading == true){
             return(
-                <ActivityIndicator size='large' />
+                <ActivityIndicator size='large' color='#28a745' />
             )
         }
         return(
-            <Button title='Finalizar' onPress={() => this.finalizar()}/>
+            <Button color='#28a745' title='Finalizar' onPress={() => this.finalizar()}/>
         )
     }
     finalizar = () => {
-        this.setState({loadingLogin: true})
+        this.setState({loading: true})
         sucessoEnvio = () => {
             alert('Sucesso ao enviar dados!')
             return NavigationService.reset('TelaInicial')
         }
+
+        let date = new Date()
+        let dia = date.getDate()
+        let mes = date.getMonth() + 1
+        let ano = date.getFullYear()
+        let hora = date.getHours()
+        let minuto = date.getMinutes()
+        let segundo = date.getSeconds()
+
+        if (dia < 10) {
+            dia = '0' + dia;
+        }
+        if (mes < 10) {
+            mes = '0' + mes;
+        }
+        if (hora < 10) {
+            hora = '0' + hora;
+        }
+        if (minuto < 10) {
+            minuto = '0' + minuto;
+        }
+        if (segundo < 10) {
+            segundo = '0' + segundo;
+        }
+        date = mes + '/' + dia + '/' + ano + ' - ' + hora + ':' + minuto + ':' + segundo
+
         let dados = {
             turno: this.props.turno,
             microarea: this.props.microarea,
             tipo_imovel: this.props.tipo_imovel,
             numero_prontuario: this.props.numero_prontuario,
             cns: this.props.cns,
-            data: this.props.data,
+            data_nascimento: this.props.data_nascimento,
             sexo: this.props.sexo,
             peso: this.props.peso,
             altura: this.props.altura,
@@ -94,9 +131,11 @@ class F1P6 extends Component {
             convite: this.props.convite,
             orientacao_prevencao: this.props.orientacao_prevencao,
             outros: this.props.outros,
-            desfecho: this.props.desfecho
+            desfecho: this.props.desfecho,
+            arquivado: false,
+            horario_visita: date
         }
-        firebase.database().ref('agentes/agente1').push(dados)
+        firebase.database().ref(`agentes/${base64.encode(firebase.auth().currentUser.email)}`).push(dados)
             .then(() => sucessoEnvio())
             .catch(erro => alert(erro.message))
     }
@@ -109,38 +148,39 @@ class F1P6 extends Component {
                         <CheckBox
                             title='Egresso de Internação'
                             checked={this.props.egresso_internacao}
-                            onPress={() => this.props.modificaEgressoInternacao(!this.props.egresso_internacao)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaEgressoInternacao(!this.props.egresso_internacao)}/>
                         <CheckBox
                             title='Convite atividades coletivas/campanha de saúde'
                             checked={this.props.convite}
-                            onPress={() => this.props.modificaConvite(!this.props.convite)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaConvite(!this.props.convite)}/>
                         <CheckBox
                             title='Orientação / prevenção'
                             checked={this.props.orientacao_prevencao}
-                            onPress={() => this.props.modificaOrientacaoPrevencao(!this.props.orientacao_prevencao)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaOrientacaoPrevencao(!this.props.orientacao_prevencao)}/>
                         <CheckBox
                             title='Outros'
                             checked={this.props.outros}
-                            onPress={() => this.props.modificaOutros(!this.props.outros)}
-                        />
+                            checkedColor='#28a745'
+                            onPress={() => this.props.modificaOutros(!this.props.outros)}/>
                         <Text style={styles.titulo}>Desfecho</Text>
                         <View style={styles.container}>
                             <RadioForm
                                 radio_props={radio_props_desfecho}
-                                initial={0}
+                                initial={this.props.desfecho}
                                 formHorizontal={false}
                                 labelHorizontal={true}
                                 animation={false}
                                 labelStyle={{fontSize: 20, marginRight: 20}}
-                                onPress={value => this.props.modificaDesfecho(value)}
-                            />
+                                buttonColor={'#28a745'}
+                                selectedButtonColor={'#28a745'}
+                                onPress={value => this.props.modificaDesfecho(value)}/>
                         </View>
                     </ScrollView>
                     <View style={styles.botoes}>
-                            <Button title='Voltar' onPress={() => goBack()}/>
+                            <Button color='#28a745' title='Voltar' onPress={() => goBack()}/>
                             <View>
                                 {this.renderBotaoEnvio()}
                             </View>
@@ -165,7 +205,7 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: 20,
         marginVertical: 8
-    },
+    }
 })
 
 const mapStateToProps = (state) => (
@@ -175,7 +215,7 @@ const mapStateToProps = (state) => (
         tipo_imovel: state.Form1Reducer.tipo_imovel,
         numero_prontuario: state.Form1Reducer.numero_prontuario,
         cns: state.Form1Reducer.cns,
-        data: state.Form1Reducer.data,
+        data_nascimento: state.Form1Reducer.data_nascimento,
         sexo: state.Form1Reducer.sexo,
         peso: state.Form1Reducer.peso,
         altura: state.Form1Reducer.altura,
